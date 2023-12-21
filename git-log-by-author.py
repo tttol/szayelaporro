@@ -3,10 +3,10 @@ import sys
 from collections import defaultdict
 import matplotlib.pyplot as plt
 
-def count_lines_by_author(author_names):
+def count_lines_by_author(since, until, author_names):
     counts = defaultdict(int)
     for author_name in author_names:
-        command = ['git', 'log', f'--author={author_name}', '--pretty=tformat:', '--numstat']
+        command = ['git', 'log', f'--author={author_name}', f'--since={since}', f'--until={until}', '--pretty=tformat:', '--numstat']
         result = subprocess.run(command, capture_output=True, text=True)
         lines = result.stdout.splitlines()
 
@@ -30,9 +30,12 @@ def plot_counts(counts):
     plt.show()
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python git-log.py [Author Name 1] [Author Name 2] ...")
+    if len(sys.argv) < 4:
+        print("Usage: python git-log.py [since] [until] [Author Name 1] [Author Name 2] ...")
         sys.exit(1)
 
-    counts = count_lines_by_author(sys.argv[1:])
+    since = sys.argv[1]
+    until = sys.argv[2]
+    author_names = sys.argv[3:]
+    counts = count_lines_by_author(since, until, author_names)
     plot_counts(counts)
