@@ -31,7 +31,7 @@ def plot_counts(counts):
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print("Usage: python git-log.py [since] [until] [Author Name 1] [Author Name 2] ...")
+        print("Usage: python git-log-by-author.py [since] [until] [Author Name 1] [Author Name 2] ...")
         sys.exit(1)
 
     since = sys.argv[1]
