@@ -1,5 +1,0 @@
-160	0	.gitignore
-1	0	README.md
-32	0	git-log.py
-128	0	git_log.txt
-2	0	requirements.txt
