@@ -2,7 +2,7 @@
 git logをグラフ化するpythonスクリプト。Authorごとのコミット数をグラフ化します。  
 A python script that graphs git log. Graph the number of commits by author.
 
-# Usage
+# Get started
 ```bash
 git clone https://github.com/tttol/szayelaporro.git
 cd szayelaporro
