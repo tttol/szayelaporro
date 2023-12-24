@@ -1,23 +1,5 @@
-import subprocess
-import sys
 from collections import defaultdict
 import matplotlib.pyplot as plt
-
-def count_lines_by_author(since, until, author_names):
-    counts = defaultdict(int)
-    for author_name in author_names:
-        command = ['git', 'log', f'--author={author_name}', f'--since={since}', f'--until={until}', '--pretty=tformat:', '--numstat']
-        result = subprocess.run(command, capture_output=True, text=True)
-        lines = result.stdout.splitlines()
-
-        for line in lines:
-            additions, deletions, _ = line.split('\t', 2)
-            if additions.isdigit():
-                counts[author_name] += int(additions)
-            if deletions.isdigit():
-                counts[author_name] += int(deletions)
-
-    return counts
 
 def plot_counts(counts):
     authors = list(counts.keys())
